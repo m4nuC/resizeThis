@@ -64,7 +64,7 @@
 
     ResizeThis.prototype._mouseStart = function ( evt ) {
         var width = this.$el.innerWidth();
-        var height = this.$el.innerWidth();
+        var height = this.$el.innerHeight();
         $( document ).on( 'mousemove.rtMove', $.proxy(this._mouseDrag, this) );
         $( document ).on( 'mouseup.rtClick', $.proxy(this._mouseStop, this) );
         this._startPos = {
@@ -86,8 +86,6 @@
     }
 
     ResizeThis.prototype._mouseDrag = function( evt ) {
-        console.log(evt);
-        
          var XY = {
             x: evt.pageX - this._startPos.x,
             y: evt.pageY - this._startPos.y
