@@ -12,7 +12,7 @@
             return factory( $ );
         });
     } else {
-        this.NProgress = factory(this.jQuery);
+        this.ResizeThis = factory( this.jQuery );
     }
 
 })(function( $ ) {
