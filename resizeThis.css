@@ -3,7 +3,12 @@
 
 .rt-handle {
     display: block;
-
+    width: 10px;
+    height: 10px;
+    border: 2px solid black;
+    position: absolute;
+    bottom: 0;
+    right: 0;
 }
 
 .rt-resizable {}

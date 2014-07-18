@@ -39,6 +39,7 @@
 
     var defaults = {
         propertyName: "value",
+        handles: "se"
     };
 
     function ResizeThis( element, options ) {
@@ -58,9 +59,33 @@
         // @TODO should leverage CSS Resize whenever possible
         this._supported && this.$el.addClass( 'rt-resizable' );
 
-        // register events
-        this.$el.on( 'mousedown.rtClick', $.proxy(this._mouseStart, this) );
+        // Inset Handles
+        this._insertHandles();
+
+        // Register event
+        $( document ).on( 'mousedown.rtClick', '.rt-handle', $.proxy(this._mouseStart, this) );
     };
+
+    ResizeThis.prototype._insertHandles = function () {
+            this.handles = this.options.handles;
+
+			if ( this.handles === "all") {
+				this.handles = "n,e,s,w,se,sw,ne,nw";
+			}
+
+			var n = this.handles.split(",");
+			this.handles = {};
+
+			for( var i = 0; i < n.length; i++ ) {
+				var handle = $.trim( n[i] );
+				var $handle = $( "<div class='rt-handle'></div>" );
+				$handle.css({ zIndex: 2999 });
+				this.$el.append( $handle );
+
+			}
+
+
+    }
 
     ResizeThis.prototype._mouseStart = function ( evt ) {
         var width = this.$el.innerWidth();
