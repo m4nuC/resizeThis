@@ -42,11 +42,23 @@
         handles: "se"
     };
 
+    // Helper function to disable elemend dragging
+    var disableDragging = function ( node ) {
+        // this works for FireFox and WebKit in future according to http://help.dottoro.com/lhqsqbtn.php
+        node.draggable = false;
+
+        // this works for older web layout engines
+        node.onmousedown = function( event ) {
+            event.preventDefault();
+            return false;
+        };
+    };
+
     function ResizeThis( element, options ) {
-        this.el = this._instance = element;
+        this.el = element;
         this.$el = $( element );
 
-        this.options = $.extend( {}, defaults, options) ;
+        this.options = $.extend( {}, defaults, options ) ;
 
         this._defaults = defaults;
 
@@ -61,9 +73,6 @@
 
         // Inset Handles
         this._insertHandles();
-
-        // Register event
-        //$( document ).on( 'mousedown.rtClick', '.rt-handle', $.proxy(this._mouseStart, this) );
     };
 
     ResizeThis.prototype._insertHandles = function () {
@@ -80,6 +89,7 @@
 				var handle = $.trim( n[i] );
 				var $handle = $( "<div class='rt-handle'></div>" );
 				$handle.css({ zIndex: 2999 });
+                disableDragging( $handle[0] );
                 $handle.on( 'mousedown.rtClick', $.proxy(this._mouseStart, this) );
 				this.$el.append( $handle );
 			}
@@ -90,12 +100,12 @@
         var height = this.$el.innerHeight();
         $( document ).on( 'mousemove.rtMove', $.proxy(this._mouseDrag, this) );
         $( document ).on( 'mouseup.rtClick', $.proxy(this._mouseStop, this) );
-        this._instance._startPos = {
+        this._startPos = {
             x: evt.pageX,
             y: evt.pageY,
         }
 
-        this._instance._startSize = {
+        this._startSize = {
             x: width,
             y: height
         }
@@ -107,8 +117,8 @@
 
     ResizeThis.prototype._mouseDrag = function( evt ) {
          var XY = {
-            x: evt.pageX - this._instance._startPos.x,
-            y: evt.pageY - this._instance._startPos.y
+            x: evt.pageX - this._startPos.x,
+            y: evt.pageY - this._startPos.y
         }
          this._resize( XY );
         console.log('mouse drag', XY);
@@ -116,8 +126,8 @@
     }
 
     ResizeThis.prototype._resize = function( XY ) {
-        var sX = this._instance._startSize.x;
-        var sY = this._instance._startSize.y;
+        var sX = this._startSize.x;
+        var sY = this._startSize.y;
 
         this.$el.css({
             width: sX + XY.x,
