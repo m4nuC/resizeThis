@@ -1,5 +1,9 @@
 var fix;
 
+// Changes static defaults
+$.fn.resizeThis._setDefaults({ noNative: true })
+
+
 // Smoke Test
 QUnit.test( "Plugin namespace exists", function( assert ) {
     assert.ok( $('#idontexist').resizeThis );
@@ -15,14 +19,12 @@ QUnit.module( "Initialize", {
     }
 });
 
-    QUnit.test( "should add class resizable if CSS supports resizing", function( assert ) {
-        document.body.style.rotate = true;
-        $('#resizeMe').resizeThis();
-        assert.ok( fix.className.indexOf('resizable') > -1 );
+    QUnit.test( "should add CSS resize property to element if CSS supports it", function( assert ) {
+        $('#resizeMe').resizeThis({ noNative: false });
+        assert.notEqual( fix.style.resize, '' );
     });
 
-    QUnit.test( "should inject handle as a child of the element", function( assert ) {
-        document.body.style.rotate = true;
+    QUnit.test( "should inject handle as a child of the element if Native is not supported or no allowed", function( assert ) {
         $('#resizeMe').resizeThis();
         assert.ok( $('#resizeMe > .rt-handle').length > 0 );
     });

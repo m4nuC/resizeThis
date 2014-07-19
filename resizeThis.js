@@ -22,7 +22,8 @@
 
     var defaults = {
         propertyName: "value",
-        handles: "se"
+        handles: "se",
+        noNative: false,
     };
 
     // Helper function to test for CSS property support
@@ -78,13 +79,20 @@
      *  Initializing Logic
      */
     ResizeThis.prototype.init = function() {
-        this._supported = _supports( 'resize' );
 
-        // @TODO should leverage CSS Resize whenever possible
-        this._supported && this.$el.addClass( 'rt-resizable' );
+        // Check if native CSS resize is supported
+        // and if allowed from options
+        this._isNative = ! this.options.noNative && _supports( 'resize' );
 
-        // Inset Handles
-        this._insertHandles();
+        if ( this._isNative ) {
+            this.$el.css({
+                "resize": "both",
+                "overflow": "hidden"
+            });
+        } else {
+            // Insert Handles
+            this._insertHandles();
+        }
     };
 
     /*
@@ -99,7 +107,6 @@
         }
 
         var n = this.handles.split(",");
-        this.handles = {};
 
         for( var i = 0; i < n.length; i++ ) {
             var handle = $.trim( n[i] );
@@ -115,22 +122,24 @@
      * Mouse Start Handler
      */
     ResizeThis.prototype._mouseStart = function ( evt ) {
-        var width = this.$el.innerWidth();
-        var height = this.$el.innerHeight();
-        $( document ).on( 'mousemove.rtMove', $.proxy(this._mouseDrag, this) );
-        $( document ).on( 'mouseup.rtClick', $.proxy(this._mouseStop, this) );
-        this._startPos = {
-            x: evt.pageX,
-            y: evt.pageY,
-        }
-
-        this._startSize = {
-            x: width,
-            y: height
-        }
-
         // Trigger start event
         this.$el.trigger( "rt:start" );
+
+        if ( ! this._isNative ) {
+            var width = this.$el.innerWidth();
+            var height = this.$el.innerHeight();
+            $( document ).on( 'mousemove.rtMove', $.proxy(this._mouseDrag, this) );
+            $( document ).on( 'mouseup.rtClick', $.proxy(this._mouseStop, this) );
+            this._startPos = {
+                x: evt.pageX,
+                y: evt.pageY,
+            }
+
+            this._startSize = {
+                x: width,
+                y: height
+            }
+        }
     }
 
     /*
@@ -139,22 +148,24 @@
     ResizeThis.prototype._mouseStop = function ( evt ) {
         // Trigger stop event
         this.$el.trigger( "rt:stop" );
-        $( document ).off( 'mousemove.rtMove' );
+         ! this._isNative && $( document ).off( 'mousemove.rtMove' );
     }
 
     /*
      * Mouse Move Handler
      */
     ResizeThis.prototype._mouseDrag = function( evt ) {
-         var XY = {
-            x: evt.pageX - this._startPos.x,
-            y: evt.pageY - this._startPos.y
-        }
-         this._resize( XY );
-
         // Trigger resizing event
         this.$el.trigger( "rt:resizing" );
 
+        if ( ! this._isNative ) {
+
+             var XY = {
+                x: evt.pageX - this._startPos.x,
+                y: evt.pageY - this._startPos.y
+            }
+             this._resize( XY );
+        }
     }
 
     /*
@@ -176,6 +187,13 @@
         return this.each(function () {
             new ResizeThis( this, options );
         });
+    }
+
+    /*
+     * Static defaults setter
+     */
+    $.fn.resizeThis._setDefaults = function ( defaultsObj ) {
+         defaults = $.extend( defaults, defaultsObj ) ;
     }
 
 })

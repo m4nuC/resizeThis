@@ -1,8 +1,7 @@
 # Resize This!
 
-Been looking for a basic, light-weight jQuery plugin to allow resizing of DOM elements and couldn't find anything that I found suitable.
+Been looking for a basic, light-weight jQuery plugin to allow resizing of DOM elements. Leverage native CSS resize property if available.
 Quick and dirty demo [HERE](http://m4nuc.github.io/resizeThis/demo/)
-
 
 ## Instructions
 * Add the CSS and JS files to your script (Browserfiy and Require should work)
@@ -25,8 +24,14 @@ $resizable.on( 'rt:resizing', function( evt ) {
 });
 ```
 
+## Options
+```
+var $resizable = $( '#myElement' ).resizeThis({
+    noNative: true, // Forces the plugin to use Javascript Implementation of resize
+});
+```
+
 # Tests
 [HERE](http://m4nuc.github.io/resizeThis/tests/)
 
-
-Fork and PR welcomed!
+PR very much welcomed (but please stick to jQuery styling guide)
