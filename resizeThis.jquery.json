@@ -1,0 +1,34 @@
+{
+    "name": "resizeThis",
+    "title": "No fuss resizable elements for jQuery",
+    "description": "Add resize capabilities to any jQuery object. Leverages native CSS resize if available",
+    "keywords": [
+        "resize"
+    ],
+    "version": "0.1.0",
+    "author": {
+        "name": "Emmanuel Chappat",
+        "url": "https://github.com/m4nuC"
+    },
+    "maintainers": [
+        {
+            "name": "Emmanuel Chappat",
+            "url": "https://github.com/m4nuC"
+        }
+    ],
+    "licenses": [
+        {
+            "type": "MIT",
+            "url": "https://github.com/jquery/jquery-color/blob/2.1.2/MIT-LICENSE.txt"
+        }
+    ],
+    "bugs": "https://github.com/m4nuC/resizeThis/issues",
+    "homepage": "https://github.com/m4nuC/resizeThis",
+    "demo": "http://m4nuc.github.io/resizeThis/demo/",
+
+    "docs": "https://github.com/m4nuC/resizeThis/issues",
+    "download": "http://code.jquery.com/#color",
+    "dependencies": {
+        "jquery": ">=1.5"
+    }
+}
