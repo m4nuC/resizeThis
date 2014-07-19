@@ -31,6 +31,17 @@ var $resizable = $( '#myElement' ).resizeThis({
 });
 ```
 
+If you need to override default settings (for instance in a testing environment) you can use the static method:
+```javascript
+$.fn.resizeThis._setDefaults( newDefaultsObject )
+```
+
+
+### To-od
+- Test multiple enviroments
+- Test multiple browsers
+- Add support for multiple types of handles
+
 # Tests
 [HERE](http://m4nuc.github.io/resizeThis/tests/)
 
