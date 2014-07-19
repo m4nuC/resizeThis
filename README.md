@@ -41,7 +41,6 @@ $.fn.resizeThis._setDefaults( newDefaultsObject )
 - Test multiple enviroments
 - Test multiple browsers
 - Add support for multiple types of handles
-- Handle case where element has not `postion` property
 
 # Tests
 [HERE](http://m4nuc.github.io/resizeThis/tests/)

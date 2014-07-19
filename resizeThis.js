@@ -89,6 +89,7 @@
                 "resize": "both",
                 "overflow": "hidden"
             });
+
         } else {
             // Insert Handles
             this._insertHandles();
@@ -101,6 +102,11 @@
      */
     ResizeThis.prototype._insertHandles = function() {
         this.handles = this.options.handles;
+
+        // Makes sure that the element has a position attribute
+        if ( this.el.style.position === '' ) {
+            this.el.style.position = 'relative'
+        }
 
         if ( this.handles === "all") {
             this.handles = "n,e,s,w,se,sw,ne,nw";

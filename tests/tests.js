@@ -29,6 +29,12 @@ QUnit.module( "Initialize", {
         assert.ok( $('#resizeMe > .rt-handle').length > 0 );
     });
 
+    QUnit.test( "should add a relative position attribute on the element if not already defined", function( assert ) {
+        var $el = $('#resizeMe').resizeThis();
+        assert.equal( $el.css('position'), 'relative' );
+    });
+
+
 // Core Tests
 QUnit.module( "Resize Element", {
     setup: function() {
