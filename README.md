@@ -4,6 +4,7 @@ Light-weight jQuery plugin to enable resizing of DOM elements. Leverage native C
 
 *Demo page essentially ripped off from: [draggable.js](http://gtramontina.github.io/draggable.js/). Background pattern from [Colorlovers](http://www.colourlovers.com/patterns/search)*
 
+
 ## Instructions
 * Add the CSS and JS files to your script (Browserfiy and Require should work)
 * Just grab an element with jQuery and Initialize the plugin:
@@ -57,6 +58,6 @@ $.fn.resizeThis._setDefaults( newDefaultsObject )
 [HERE](http://m4nuc.github.io/resizeThis/tests/)
 
 
-# &#9760;&#9760;&#9760;
+# &#9760;&#9760;
 This code is not throuroughly tested. If you find any issues, please report. I'll address them in a jiffy. Thanks!
 
