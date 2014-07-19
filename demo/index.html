@@ -163,8 +163,18 @@
     <script src="js/jquery2.js"></script>
     <script src="../resizeThis.js"></script>
     <script>
-        $('a').resizeThis();
-        console.log($.fn.resizeThis);
+        var $resizable = $('a').resizeThis();
+        $resizable.on( 'rt:start', function() {
+            console.log( 'resizing' );
+        });
+
+        $resizable.on( 'rt:stop', function( evt ) {
+            console.log( 'stoping' );
+        });
+
+        $resizable.on( 'rt:resizing', function( evt ) {
+            console.log( 'resizing' );
+        });
     </script>
   </body>
 </html>

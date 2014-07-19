@@ -9,7 +9,20 @@ Quick and dirty demo [HERE](http://m4nuc.github.io/resizeThis/demo/)
 * Just grab an element with jQuery and Initialize the plugin:
 
 ```
-$( '#myElement' ).resizeThis()
+var $resizable = $( '#myElement' ).resizeThis();
+
+// Register Event listners like so
+$resizable.on( 'rt:start', function() {
+    console.log( 'resizing' );
+});
+
+$resizable.on( 'rt:stop', function( evt ) {
+    console.log( 'stoping' );
+});
+
+$resizable.on( 'rt:resizing', function( evt ) {
+    console.log( 'resizing' );
+});
 ```
 
 Fork and PR welcomed!

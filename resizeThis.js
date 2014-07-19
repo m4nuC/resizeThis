@@ -5,10 +5,11 @@
  */
 
 ;(function( factory ) {
+
     if ( typeof exports === 'object' ) {
         module.exports = factory( this.jQuery || require('jquery') );
     } else if ( typeof define === 'function' && define.amd ) {
-        define([ 'jquery' ], function ($ ) {
+        define([ 'jquery' ], function ( $ ) {
             return factory( $ );
         });
     } else {
@@ -16,6 +17,12 @@
     }
 
 })(function( $ ) {
+
+    var defaults = {
+        propertyName: "value",
+        handles: "se"
+    };
+
     // test for CSS property suport
     var _supports = function( property ) {
         var prefixes = [ 'Webkit', 'Moz', 'O' ];
@@ -28,7 +35,7 @@
 
         // Try Vendors prefixes
         for ( var i in prefixes ) {
-            supported = supported | prefixes[i] + Property in document.body.style;
+            supported = supported | prefixes[ i ] + Property in document.body.style;
         }
 
         // Try standard
@@ -36,11 +43,6 @@
 
         return supported;
     }
-
-    var defaults = {
-        propertyName: "value",
-        handles: "se"
-    };
 
     // Helper function to disable elemend dragging
     var disableDragging = function ( node ) {
@@ -58,14 +60,14 @@
         this.el = element;
         this.$el = $( element );
 
-        this.options = $.extend( {}, defaults, options ) ;
+        this.options = $.extend({}, defaults, options ) ;
 
         this._defaults = defaults;
 
         this.init();
     }
 
-    ResizeThis.prototype.init = function () {
+    ResizeThis.prototype.init = function() {
         this._supported = _supports( 'resize' );
 
         // @TODO should leverage CSS Resize whenever possible
@@ -75,24 +77,24 @@
         this._insertHandles();
     };
 
-    ResizeThis.prototype._insertHandles = function () {
-            this.handles = this.options.handles;
+    ResizeThis.prototype._insertHandles = function() {
+        this.handles = this.options.handles;
 
-			if ( this.handles === "all") {
-				this.handles = "n,e,s,w,se,sw,ne,nw";
-			}
+        if ( this.handles === "all") {
+            this.handles = "n,e,s,w,se,sw,ne,nw";
+        }
 
-			var n = this.handles.split(",");
-			this.handles = {};
+        var n = this.handles.split(",");
+        this.handles = {};
 
-			for( var i = 0; i < n.length; i++ ) {
-				var handle = $.trim( n[i] );
-				var $handle = $( "<div class='rt-handle'></div>" );
-				$handle.css({ zIndex: 2999 });
-                disableDragging( $handle[0] );
-                $handle.on( 'mousedown.rtClick', $.proxy(this._mouseStart, this) );
-				this.$el.append( $handle );
-			}
+        for( var i = 0; i < n.length; i++ ) {
+            var handle = $.trim( n[i] );
+            var $handle = $( "<div class='rt-handle'></div>" );
+            $handle.css({ zIndex: 2999 });
+            disableDragging( $handle[0] );
+            $handle.on( 'mousedown.rtClick', $.proxy(this._mouseStart, this) );
+            this.$el.append( $handle );
+        }
     }
 
     ResizeThis.prototype._mouseStart = function ( evt ) {
@@ -109,9 +111,14 @@
             x: width,
             y: height
         }
+
+        // Trigger start event
+        this.$el.trigger( "rt:start" );
     }
 
     ResizeThis.prototype._mouseStop = function ( evt ) {
+        // Trigger stop event
+        this.$el.trigger( "rt:stop" );
         $( document ).off( 'mousemove.rtMove' );
     }
 
@@ -121,7 +128,9 @@
             y: evt.pageY - this._startPos.y
         }
          this._resize( XY );
-        console.log('mouse drag', XY);
+
+        // Trigger resizing event
+        this.$el.trigger( "rt:resizing" );
 
     }
 
