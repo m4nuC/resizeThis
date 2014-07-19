@@ -1,180 +1,104 @@
-<!doctype html>
-<html class="no-js" lang="en">
+<!DOCTYPE html>
   <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Foundation | Welcome</title>
-    <link rel="stylesheet" href="css/foundation.css" />
-    <link rel="stylesheet" href="../resizeThis.css">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>draggable.js</title>
 
+    <link rel="stylesheet" type="text/css" href="./css/styles.css">
+
+    <script src="https://rawgithub.com/LeaVerou/prefixfree/gh-pages/prefixfree.min.js"></script>
+    <script src="https://rawgithub.com/ded/reqwest/master/reqwest.min.js"></script>
+    <script src="https://rawgithub.com/indexzero/code-highlighter/master/code-highlighter.js"></script>
+    <script src="https://rawgithub.com/indexzero/code-highlighter/master/languages/javascript.js"></script>
   </head>
   <body>
-    
-    <div class="row">
-      <div class="large-12 columns">
-        <h1>Welcome to Foundation</h1>
-      </div>
-    </div>
-    
-    <div class="row">
-      <div class="large-12 columns">
-      	<div class="panel">
-	        <h3>We&rsquo;re stoked you want to try Foundation! </h3>
-	        <p>To get going, this file (index.html) includes some basic styles you can modify, play around with, or totally destroy to get going.</p>
-	        <p>Once you've exhausted the fun in this document, you should check out:</p>
-	        <div class="row">
-	        	<div class="large-4 medium-4 columns">
-	    		<p><a href="http://foundation.zurb.com/docs">Foundation Documentation</a><br />Everything you need to know about using the framework.</p>
-	    	</div>
-	        	<div class="large-4 medium-4 columns">
-	        		<p><a href="http://github.com/zurb/foundation">Foundation on Github</a><br />Latest code, issue reports, feature requests and more.</p>
-	        	</div>
-	        	<div class="large-4 medium-4 columns">
-	        		<p><a href="http://twitter.com/foundationzurb">@foundationzurb</a><br />Ping us on Twitter if you have questions. If you build something with this we'd love to see it (and send you a totally boss sticker).</p>
-	        	</div>        
-					</div>
-      	</div>
-      </div>
-    </div>
+<a href="https://github.com/m4nuC/resizeThis"><img style="position: absolute; top: 0; left: 0; border: 0;" src="https://camo.githubusercontent.com/8b6b8ccc6da3aa5722903da7b58eb5ab1081adee/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f6c6566745f6f72616e67655f6666373630302e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_left_orange_ff7600.png"></a>
+    <header>
+        <h1><b>resizeThis.js</b> jQuery Plugin</h1>
+      <h2>Light weight Resize for your jQuery element. No fuss, No sparkles (and hopefully no bugs)</h2>
+    </header>
 
-    <div class="row">
-      <div class="large-8 medium-8 columns">
-        <h5>Here&rsquo;s your basic grid:</h5>
-        <!-- Grid Example -->
+    <article>
+      <section id="examples">
+        <ol>
+          <li>
+                  <h1>Supports CSS resize</h1>
 
-        <div class="row">
-          <div class="large-12 columns">
-            <div class="callout panel">
-              <p><strong>This is a twelve column section in a row.</strong> Each of these includes a div.panel element so you can see where the columns are - it's not required at all for the grid.</p>
+            <div id="native">
+                <span>Look, Native CSS resize ( <a target="_blank" href="https://developer.mozilla.org/en-US/docs/Web/CSS/resize#Browser_compatibility">support</a>)</span>
+              <p></p>
             </div>
-          </div>
-        </div>
-        <div class="row">
-          <div id="resizeTest1" class="large-6 medium-6 columns">
-            <div class="callout panel">
-              <p>Six columns</p>
-            </div>
-          </div>
-          <div class="large-6 medium-6 columns">
-            <div class="callout panel">
-              <p>Six columns</p>
-            </div>
-          </div>
-        </div>
-        <div class="row">
-          <div class="large-4 medium-4 small-4 columns">
-            <div class="callout panel">
-              <p>Four columns</p>
-            </div>
-          </div>
-          <div class="large-4 medium-4 small-4 columns">
-            <div class="callout panel">
-              <p>Four columns</p>
-            </div>
-          </div>
-          <div class="large-4 medium-4 small-4 columns">
-            <div class="callout panel">
-              <p>Four columns</p>
-            </div>
-          </div>
-        </div>
-        
-        <hr />
-                
-        <h5>We bet you&rsquo;ll need a form somewhere:</h5>
-        <form>
-				  <div class="row">
-				    <div class="large-12 columns">
-				      <label>Input Label</label>
-				      <input type="text" placeholder="large-12.columns" />
-				    </div>
-				  </div>
-				  <div class="row">
-				    <div class="large-4 medium-4 columns">
-				      <label>Input Label</label>
-				      <input type="text" placeholder="large-4.columns" />
-				    </div>
-				    <div class="large-4 medium-4 columns">
-				      <label>Input Label</label>
-				      <input type="text" placeholder="large-4.columns" />
-				    </div>
-				    <div class="large-4 medium-4 columns">
-				      <div class="row collapse">
-				        <label>Input Label</label>
-				        <div class="small-9 columns">
-				          <input type="text" placeholder="small-9.columns" />
-				        </div>
-				        <div class="small-3 columns">
-				          <span class="postfix">.com</span>
-				        </div>
-				      </div>
-				    </div>
-				  </div>
-				  <div class="row">
-				    <div class="large-12 columns">
-				      <label>Select Box</label>
-				      <select>
-				        <option value="husker">Husker</option>
-				        <option value="starbuck">Starbuck</option>
-				        <option value="hotdog">Hot Dog</option>
-				        <option value="apollo">Apollo</option>
-				      </select>
-				    </div>
-				  </div>
-				  <div class="row">
-				    <div class="large-6 medium-6 columns">
-				      <label>Choose Your Favorite</label>
-				      <input type="radio" name="pokemon" value="Red" id="pokemonRed"><label for="pokemonRed">Radio 1</label>
-				      <input type="radio" name="pokemon" value="Blue" id="pokemonBlue"><label for="pokemonBlue">Radio 2</label>
-				    </div>
-				    <div class="large-6 medium-6 columns">
-				      <label>Check these out</label>
-				      <input id="checkbox1" type="checkbox"><label for="checkbox1">Checkbox 1</label>
-				      <input id="checkbox2" type="checkbox"><label for="checkbox2">Checkbox 2</label>
-				    </div>
-				  </div>
-				  <div class="row">
-				    <div class="large-12 columns">
-				      <label>Textarea Label</label>
-				      <textarea placeholder="small-12.columns"></textarea>
-				    </div>
-				  </div>
-				</form>
-      </div>     
+            <code class="javascript"><pre>
+        var $resizable = $( '#native' ).resizeThis();
+            </pre></code>
+          </li>
 
-      <div class="large-4 medium-4 columns">
-			  <h5>Try one of these buttons:</h5>
-			  <p><a href="#" class="small button">Simple Button</a><br/>
-        <a href="#" class="small radius button">Radius Button</a><br/>
-        <a href="#" class="small round button">Round Button</a><br/>            
-        <a href="#" class="medium success button">Success Btn</a><br/>
-        <a href="#" class="medium alert button">Alert Btn</a><br/>
-        <a href="#" class="medium secondary button">Secondary Btn</a></p>           
-				<div class="panel">
-        	<h5>So many components, girl!</h5>
-        	<p>A whole kitchen sink of goodies comes with Foundation. Checkout the docs to see them all, along with details on making them your own.</p>
-        	<a href="http://foundation.zurb.com/docs/" class="small button">Go to Foundation Docs</a>          
-        </div>
-      </div>
-    </div>
-    <style type="text/css" media="screen">
-        #resizeTest1 { background-color: red}
-    </style>
-    <script src="js/jquery2.js"></script>
-    <script src="../resizeThis.js"></script>
-    <script>
-        var $resizable = $('a').resizeThis();
+
+          <li>
+            <h1>Event based</h1>
+
+            <div id="events">
+              <span>No callbacks, All events</span>
+                <span class="console">
+                    LOG..
+                </span>
+              <p></p>
+            </div>
+            <code class="javascript"><pre>
+        var $resizable = $( '#events' ).resizeThis({ noNative: true });
+
         $resizable.on( 'rt:start', function() {
-            console.log( 'resizing' );
+            var $cLog = $( this ).find( '.console' );
+            $cLog.text( 'STARTED: ' );
         });
 
         $resizable.on( 'rt:stop', function( evt ) {
-            console.log( 'stoping' );
+            var $cLog = $( this ).find( '.console' );
+            $cLog.text( $cLog.text() + 'STOPED!' );
         });
 
         $resizable.on( 'rt:resizing', function( evt ) {
-            console.log( 'resizing' );
+            var $cLog = $( this ).find( '.console' );
+            $cLog.text( $cLog.text() + 'resizing, ' );
+        });
+            </pre></code>
+          </li>
+        </ol>
+      </section>
+    <section id="tests">
+        <h1> I Ain't Scared of No Tests</h1>
+      <iframe src="http://m4nuc.github.io/resizeThis/tests/"></iframe>
+  </section>
+    </article>
+
+    <footer>
+    </footer>
+
+  </body>
+    <link rel="stylesheet" type="text/css" href="../resizeThis.css">
+    <script src="js/jquery2.js"></script>
+    <script src="../resizeThis.js"></script>
+    <script>
+        $(function() {
+            $( '#native' ).resizeThis();
+
+            var $resizable = $( '#events' ).resizeThis({ noNative: true });
+
+            $resizable.on( 'rt:start', function() {
+                var $cLog = $( this ).find( '.console' );
+                $cLog.text( 'STARTED: ' );
+            });
+
+            $resizable.on( 'rt:stop', function( evt ) {
+                var $cLog = $( this ).find( '.console' );
+                $cLog.text( $cLog.text() + 'STOPED!' );
+            });
+
+            $resizable.on( 'rt:resizing', function( evt ) {
+                var $cLog = $( this ).find( '.console' );
+                $cLog.text( $cLog.text() + 'resizing, ' );
+            });
         });
     </script>
-  </body>
 </html>
+

@@ -157,7 +157,8 @@
     ResizeThis.prototype._mouseDrag = function( evt ) {
         // Trigger resizing event
         this.$el.trigger( "rt:resizing" );
-
+        console.log('resizing');
+        
         if ( ! this._isNative ) {
 
              var XY = {

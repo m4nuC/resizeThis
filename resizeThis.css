@@ -5,7 +5,8 @@
     display: block;
     width: 10px;
     height: 10px;
-    border: 2px solid black;
+    border-top: 2px solid red;
+    border-left: 2px solid red;
     position: absolute;
     bottom: 0;
     right: 0;

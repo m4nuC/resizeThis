@@ -1,0 +1,189 @@
+/* http://meyerweb.com/eric/tools/css/reset/
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+  display: block;
+}
+body {
+  line-height: 1;
+}
+ol, ul {
+  list-style: none;
+}
+blockquote, q {
+  quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+  content: '';
+  content: none;
+}
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+// styles
+@import url(http://fonts.googleapis.com/css?family=Roboto:400,100);
+@import url(http://fonts.googleapis.com/css?family=Source+Code+Pro:300);
+
+* { box-sizing: border-box; }
+
+html {
+  background-image: url(http://colourlovers.com.s3.amazonaws.com/images/patterns/210/210651.png?1220488758);
+  font-weight: 100;
+  font-family: 'Roboto', sans-serif;
+}
+
+body > header {
+  margin-bottom: 40px;
+  padding: 40px;
+  width: 100%;
+  color: white;
+
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+  background-color: rgba(28, 28, 28, 0.85);
+  text-align: center;
+}
+
+a {
+  text-decoration:  none;
+  color: orange;
+}
+
+a:hover {
+  color: rgb(255, 191, 0);
+}
+
+body > header > h1 {
+  margin-bottom: 5px;
+  line-height: 30px;
+  font-size: 55px;
+}
+
+body > header > h1 > b {
+  font-weight: 500;
+}
+
+
+body > header > h2 {
+  font-size: 18px;
+  margin-top: 27px;
+}
+
+body > article {
+  margin: 0 auto;
+  width: 90%;
+}
+
+body > article > section {
+  margin-bottom: 40px;
+}
+
+body > article > section  h1 {
+  margin-bottom: 20px;
+  font-size: 26px;
+  color: black;
+}
+
+#examples > ol > li {
+      color: white;
+position: relative;
+  margin-bottom: 40px;
+  display: block;
+  overflow: auto;
+  min-height: 100px;
+}
+
+#examples > ol > li > div {
+    position: relative;
+
+  display: inline-block;
+  float: left;
+  padding: 10px;
+  min-height: 100px;
+  width: 25%;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  border-radius: 2px;
+  text-align: center;
+  background-color: rgba(28, 28, 28, 0.75);
+}
+
+
+#examples > ol > li > div:active {
+  background-color: rgba(28, 28, 28, 0.5r5);
+}
+
+#examples > ol > li > div > span {
+  display: block;
+  background-color: rgba(0, 0, 0, 0.2);
+  padding: 5px;
+  margin-bottom: 5px;
+  border-radius: 2px;
+}
+
+#examples > ol > li > code {
+      color: white;
+
+  display: inline-block;
+  float: right;
+  width: 70%;
+  vertical-align: top;
+  font-size: 14px;
+  line-height: 20px;
+  font-family: 'Source Code Pro', monospace;
+  background-color: rgba(28, 28, 28, 0.85);
+  border-radius: 2px;
+  padding: 20px 5px;
+  overflow: hidden;
+}
+
+.console {
+    font-size: 10px;
+    color: rgba( 256, 256, 256, 0.9);
+    height: auto;
+    max-height: 70%;
+    min-height: 50px;
+    overflow: none;
+    text-align: left;
+}
+
+#tests > iframe {
+  width: 100%;
+  min-height: 500px;
+  background: rgba(255, 255, 255, 0.8);
+  border-radius: 2px;
+}
+
+/*--------------------------------------------------------------
+ Javascript
+ --------------------------------------------------------------*/
+code.javascript span.comment   { color: #66cc33;  }
+code.javascript span.string    { color: #DFC484;  }
+code.javascript span.keywords  { color: #C9783E;  }
+code.javascript span.brackets  { color: #999999;  }
+code.javascript span.global    { color: #C9783E;  }
