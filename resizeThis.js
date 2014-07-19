@@ -5,7 +5,9 @@
  */
 
 ;(function( factory ) {
-
+    /*
+     * Exposes the plugin according to environment (window, AMD, CommonJS)
+     */
     if ( typeof exports === 'object' ) {
         module.exports = factory( this.jQuery || require('jquery') );
     } else if ( typeof define === 'function' && define.amd ) {
@@ -23,7 +25,7 @@
         handles: "se"
     };
 
-    // test for CSS property suport
+    // Helper function to test for CSS property support
     var _supports = function( property ) {
         var prefixes = [ 'Webkit', 'Moz', 'O' ];
         var supported = false;
@@ -35,16 +37,17 @@
 
         // Try Vendors prefixes
         for ( var i in prefixes ) {
+            // Bitwise opperation -- If any is true then property is active
             supported = supported | prefixes[ i ] + Property in document.body.style;
         }
 
-        // Try standard
+        // Try standard syntax
         supported = supported | property in document.body.style;
 
         return supported;
     }
 
-    // Helper function to disable elemend dragging
+    // Helper function to disable element dragging
     var disableDragging = function ( node ) {
         // this works for FireFox and WebKit in future according to http://help.dottoro.com/lhqsqbtn.php
         node.draggable = false;
@@ -56,6 +59,10 @@
         };
     };
 
+    /*
+     *  Constructor
+     *  Args: DOM element, Options hash
+     */
     function ResizeThis( element, options ) {
         this.el = element;
         this.$el = $( element );
@@ -67,6 +74,9 @@
         this.init();
     }
 
+    /*
+     *  Initializing Logic
+     */
     ResizeThis.prototype.init = function() {
         this._supported = _supports( 'resize' );
 
@@ -77,6 +87,10 @@
         this._insertHandles();
     };
 
+    /*
+     * Parses handle option and inject handles
+     * @TODO support for more handles (right now only South East works)
+     */
     ResizeThis.prototype._insertHandles = function() {
         this.handles = this.options.handles;
 
@@ -97,6 +111,9 @@
         }
     }
 
+    /*
+     * Mouse Start Handler
+     */
     ResizeThis.prototype._mouseStart = function ( evt ) {
         var width = this.$el.innerWidth();
         var height = this.$el.innerHeight();
@@ -116,12 +133,18 @@
         this.$el.trigger( "rt:start" );
     }
 
+    /*
+     * Mouse Stop Handler
+     */
     ResizeThis.prototype._mouseStop = function ( evt ) {
         // Trigger stop event
         this.$el.trigger( "rt:stop" );
         $( document ).off( 'mousemove.rtMove' );
     }
 
+    /*
+     * Mouse Move Handler
+     */
     ResizeThis.prototype._mouseDrag = function( evt ) {
          var XY = {
             x: evt.pageX - this._startPos.x,
@@ -134,6 +157,9 @@
 
     }
 
+    /*
+     * Resizing Logic
+     */
     ResizeThis.prototype._resize = function( XY ) {
         var sX = this._startSize.x;
         var sY = this._startSize.y;
