@@ -25,4 +25,8 @@ $resizable.on( 'rt:resizing', function( evt ) {
 });
 ```
 
+# Tests
+[HERE](http://m4nuc.github.io/resizeThis/tests/)
+
+
 Fork and PR welcomed!
