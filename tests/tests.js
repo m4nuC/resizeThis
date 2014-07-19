@@ -80,6 +80,23 @@ QUnit.module( "Resize Element", {
         assert.ok( oW !== $el.innerWidth() );
     });
 
+    QUnit.test( "should not let size be smaller than the options minSize value", function( assert ) {
+        var $el = $( '#resizeMe' ).css({ width: 100, height: 100 }).resizeThis({ minSize: 12 });
+        var e = $.Event( 'mousedown' );
+        e.pageX = 10;
+        e.pageY = 10;
+        $el.find( '.rt-handle' ).trigger( e );
+
+        var e2 = $.Event( 'mousemove' );
+        e2.pageX = -100;
+        e2.pageY = -100;
+        $( document ).trigger( e2 );
+        console.log($el.innerWidth());
+        
+        assert.ok( $el.innerWidth() == 12 );
+    });
+
+
 // Events Tests
 var called = false;
 QUnit.module( "Events", {

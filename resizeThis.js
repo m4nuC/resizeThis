@@ -24,6 +24,7 @@
         propertyName: "value",
         handles: "se",
         noNative: false,
+        minSize: 10,
     };
 
     // Helper function to test for CSS property support
@@ -87,6 +88,8 @@
         if ( this._isNative ) {
             this.$el.css({
                 "resize": "both",
+                "min-width": this.options.minSize + "px",
+                "min-height": this.options.minSize + "px",
                 "overflow": "hidden"
             });
 
@@ -165,7 +168,6 @@
         // Trigger resizing event
         this.$el.trigger( "rt:resizing" );
         if ( ! this._isNative ) {
-
              var XY = {
                 x: evt.pageX - this._startPos.x,
                 y: evt.pageY - this._startPos.y
@@ -181,9 +183,17 @@
         var sX = this._startSize.x;
         var sY = this._startSize.y;
 
+        // New size to be applied to the element
+        var nWidth = sX + XY.x;
+        var nHeight = sY + XY.y;
+
+        // Make sure that size can not be lower than the minSize value
+        nWidth = nWidth < this.options.minSize ? this.options.minSize : nWidth;
+        nHeight = nHeight < this.options.minSize ? this.options.minSize : nHeight;
+
         this.$el.css({
-            width: sX + XY.x,
-            height: sY + XY.y
+            width: nWidth,
+            height: nHeight
         })
     }
 
