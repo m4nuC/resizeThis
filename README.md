@@ -1,8 +1,8 @@
 # Resize This!
 
-Light-weight jQuery plugin to allow resizing of DOM elements that leverage native CSS resize property when available. Compatible with Brwoserify and RequireJS. [Demo](http://m4nuc.github.io/resizeThis/demo/).
+Light-weight jQuery plugin to allow resizing of DOM elements that leverage native CSS resize property when available. Compatible with Browserify (CommonJS) and RequireJS (AMD). [Demo here](http://m4nuc.github.io/resizeThis/demo/).
 
-*(Demo page essentially ripped off from: [draggable.js](http://gtramontina.github.io/draggable.js/), background pattern from [Colorlovers](http://www.colourlovers.com/patterns/search))*
+*Demo page essentially ripped off from: [draggable.js](http://gtramontina.github.io/draggable.js/). Background pattern from [Colorlovers](http://www.colourlovers.com/patterns/search)*
 
 ## Instructions
 * Add the CSS and JS files to your script (Browserfiy and Require should work)
@@ -48,7 +48,7 @@ If you need to override default settings (for instance in a testing environment)
 $.fn.resizeThis._setDefaults( newDefaultsObject )
 ```
 
-### To-od
+### To-do
 - Test multiple enviroments
 - Test multiple browsers
 - Add support for multiple types of handles
