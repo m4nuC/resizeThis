@@ -132,7 +132,7 @@ QUnit.module( "Events", {
         e.pageY = 10;
         $el.find( '.rt-handle' ).trigger( e );
         // Register a spy callback
-        $el.on( 'rt:stop', function() {
+        $el.on( 'rt:resizing', function() {
             called = true;
         })
 

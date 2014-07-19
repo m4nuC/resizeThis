@@ -165,6 +165,7 @@
         // Trigger resizing event
         this.$el.trigger( "rt:resizing" );
         if ( ! this._isNative ) {
+
              var XY = {
                 x: evt.pageX - this._startPos.x,
                 y: evt.pageY - this._startPos.y
