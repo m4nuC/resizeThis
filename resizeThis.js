@@ -119,7 +119,7 @@
             var $handle = $( "<div class='rt-handle'></div>" );
             $handle.css({ zIndex: 2999 });
             disableDragging( $handle[0] );
-            $handle.on( 'mousedown.rtClick', $.proxy(this._mouseStart, this) );
+            $handle.on( 'mousedown.rtStart', $.proxy(this._mouseStart, this) );
             this.$el.append( $handle );
         }
     }
@@ -135,7 +135,7 @@
             var width = this.$el.innerWidth();
             var height = this.$el.innerHeight();
             $( document ).on( 'mousemove.rtMove', $.proxy(this._mouseDrag, this) );
-            $( document ).on( 'mouseup.rtClick', $.proxy(this._mouseStop, this) );
+            $( document ).on( 'mouseup.rtStop', $.proxy(this._mouseStop, this) );
             this._startPos = {
                 x: evt.pageX,
                 y: evt.pageY,
@@ -154,7 +154,8 @@
     ResizeThis.prototype._mouseStop = function ( evt ) {
         // Trigger stop event
         this.$el.trigger( "rt:stop" );
-         ! this._isNative && $( document ).off( 'mousemove.rtMove' );
+        $( document ).off( 'mousemove.rtMove' );
+        $( document ).off( 'mouseup.rtStop' );
     }
 
     /*
@@ -163,10 +164,7 @@
     ResizeThis.prototype._mouseDrag = function( evt ) {
         // Trigger resizing event
         this.$el.trigger( "rt:resizing" );
-        console.log('resizing');
-        
         if ( ! this._isNative ) {
-
              var XY = {
                 x: evt.pageX - this._startPos.x,
                 y: evt.pageY - this._startPos.y
