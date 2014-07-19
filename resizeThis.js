@@ -25,6 +25,7 @@
         handles: "se",
         noNative: false,
         minSize: 10,
+        maxSize: Number.POSITIVE_INFINITY,
     };
 
     // Helper function to test for CSS property support
@@ -90,6 +91,8 @@
                 "resize": "both",
                 "min-width": this.options.minSize + "px",
                 "min-height": this.options.minSize + "px",
+                "max-width": this.options.maxSize + "px",
+                "max-height": this.options.maxSize + "px",
                 "overflow": "hidden"
             });
 
@@ -187,9 +190,17 @@
         var nWidth = sX + XY.x;
         var nHeight = sY + XY.y;
 
-        // Make sure that size can not be lower than the minSize value
-        nWidth = nWidth < this.options.minSize ? this.options.minSize : nWidth;
-        nHeight = nHeight < this.options.minSize ? this.options.minSize : nHeight;
+        // Make sure that size can not be lower than the minSize & maxSize value
+        var min = this.options.minSize;
+        var max = this.options.maxSize;
+
+        // Nested Ternary
+        nWidth = nWidth < min ? min :
+            nWidth > max ? max :
+                nWidth;
+        nHeight = nHeight < min ? min :
+            nHeight > max ? max :
+                nHeight;
 
         this.$el.css({
             width: nWidth,

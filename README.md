@@ -28,15 +28,24 @@ $resizable.on( 'rt:resizing', function( evt ) {
 ```javascript
 var $resizable = $( '#myElement' ).resizeThis({
     noNative: true, // Forces the plugin to use Javascript Implementation of resize
-    minSize: 40, // Positive Integer to represent the minimal height and width that the element be reiszed to
+    minSize: 40, // Positive Integer to represent the minimal height and width that the element can be reiszed to
+    maxSize: 40, // Positive Integer to represent the maximal height and width that the element can be reiszed to
 });
+```
+
+## Options Defaults
+```javascript
+var defaults = {
+    noNative: false,
+    minSize: 10,
+    maxSize: Number.POSITIVE_INFINITY,
+}
 ```
 
 If you need to override default settings (for instance in a testing environment) you can use the static method:
 ```javascript
 $.fn.resizeThis._setDefaults( newDefaultsObject )
 ```
-
 
 ### To-od
 - Test multiple enviroments
@@ -46,4 +55,7 @@ $.fn.resizeThis._setDefaults( newDefaultsObject )
 # Tests
 [HERE](http://m4nuc.github.io/resizeThis/tests/)
 
-PR very much welcomed (but please stick to jQuery styling guide)
+
+# &#9760;&#9760;&#9760;
+This code is not throuroughly tested. If you find any issues, please report. I'll address them in a jiffy. Thanks!
+
