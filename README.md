@@ -7,7 +7,7 @@ Quick and dirty demo [HERE](http://m4nuc.github.io/resizeThis/demo/)
 * Add the CSS and JS files to your script (Browserfiy and Require should work)
 * Just grab an element with jQuery and Initialize the plugin:
 
-```
+```javascript
 var $resizable = $( '#myElement' ).resizeThis();
 
 // Register Event listners like so
@@ -25,7 +25,7 @@ $resizable.on( 'rt:resizing', function( evt ) {
 ```
 
 ## Options
-```
+```javascript
 var $resizable = $( '#myElement' ).resizeThis({
     noNative: true, // Forces the plugin to use Javascript Implementation of resize
 });
